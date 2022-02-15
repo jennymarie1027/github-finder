@@ -1,12 +1,12 @@
 import React, { useState, useContext } from 'react'
 import GithubContext from '../../context/github/GithubContext';
-import githubReducer from '../../context/github/GithubReducer';
+// import githubReducer from '../../context/github/GithubReducer';
 
 function UserSearch() {
 
     const [text, setText] = useState('')
 
-    const { users, searchUsers, loading } = useContext(GithubContext)
+    const { searchUsers, loading, clearUsers } = useContext(GithubContext)
 
     function handleSubmit(e){
         e.preventDefault();
@@ -18,6 +18,10 @@ function UserSearch() {
 
             setText('')
         }
+    }
+
+    function handleClick() {
+        clearUsers();
     }
 
   return (
@@ -38,7 +42,7 @@ function UserSearch() {
         </div>
         {!loading && (
         <div>
-            <button className='btn btn-ghost btn-lg'>Clear</button>
+            <button className='btn btn-ghost btn-lg' onClick={handleClick}>Clear</button>
         </div>
         )}
     </div>
