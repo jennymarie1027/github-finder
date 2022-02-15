@@ -6,7 +6,7 @@ function UserSearch() {
 
     const [text, setText] = useState('')
 
-    const { users } = useContext(GithubContext)
+    const { users, searchUsers, loading } = useContext(GithubContext)
 
     function handleSubmit(e){
         e.preventDefault();
@@ -14,7 +14,7 @@ function UserSearch() {
         if (text === '') {
             alert('Please enter something');
         } else {
-            // @todo => search users
+            searchUsers(text);
 
             setText('')
         }
@@ -36,7 +36,7 @@ function UserSearch() {
                 </div>
             </form>
         </div>
-        {users.length > 0 && (
+        {!loading && (
         <div>
             <button className='btn btn-ghost btn-lg'>Clear</button>
         </div>

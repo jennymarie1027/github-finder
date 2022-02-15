@@ -4,7 +4,7 @@ import UserItem from './UserItem'
 import GithubContext from '../../context/github/GithubContext'
 
 function UserResult() {
-    const { users, loading } = useContext(GithubContext)
+    const { users, loading } = useContext(GithubContext);
 
     if(!loading) {
         return (
@@ -17,6 +17,7 @@ function UserResult() {
     } else {
        return <Spinner />
     }
+
 
 }
 
